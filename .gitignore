@@ -1,0 +1,10 @@
+# IntelliJ IDEA
+.idea/**/workspace.xml
+.idea/**/libraries
+*.iml
+
+# SBT
+/project/target
+/project/project/target
+/target
+.bsp/

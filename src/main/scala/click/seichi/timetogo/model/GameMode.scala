@@ -7,12 +7,12 @@ sealed abstract class GameMode(val asBukkit: BukkitGameMode) {
 }
 
 object GameMode {
-  def values: Set[GameMode] = Set(Survive, Creative, Adventure, Spectator)
+  def values: Set[GameMode] = Set(Survival, Creative, Adventure, Spectator)
 
   def fromString(str: String): Option[GameMode] =
     values.find(_.entryName.toLowerCase == str.toLowerCase)
 
-  case object Survive extends GameMode(BukkitGameMode.SURVIVAL)
+  case object Survival extends GameMode(BukkitGameMode.SURVIVAL)
 
   case object Creative extends GameMode(BukkitGameMode.CREATIVE)
 

@@ -1,0 +1,3 @@
+name: @name@
+version: @version@
+main: click.seichi.timetogo.TimeToGo

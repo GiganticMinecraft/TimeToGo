@@ -1,7 +1,7 @@
 # IntelliJ IDEA
 .idea/**/workspace.xml
 .idea/**/libraries
-*.iml
+**/**.iml
 
 # SBT
 /project/target

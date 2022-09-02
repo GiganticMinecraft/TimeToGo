@@ -1,4 +1,4 @@
-package click.seichi.timetogo
+package click.seichi.timetogo.presenter
 
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin

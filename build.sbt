@@ -17,7 +17,7 @@ val testDependencies = Seq(
   "org.scalatest" %% "scalatest" % "3.2.13"
 ).map(_ % "test")
 
-libraryDependencies := providedDependencies ++ testDependencies
+libraryDependencies ++= providedDependencies ++ testDependencies
 
 excludeDependencies ++= Seq(
   ExclusionRule(organization = "org.bukkit", name = "bukkit"),
@@ -66,6 +66,8 @@ lazy val root = (project in file(".")).settings(
   name := "TimeToGo",
   scalaVersion := "2.13.8",
   assembly / assemblyOutputPath := baseDirectory.value / "target" / "build" / s"${name.value}-${version.value}.jar",
+  // assmeblyの中でtestをする
+  assembly / test := (Test / test).value,
   // scalafixがsemanticdbを必要とする
   semanticdbEnabled := true,
   semanticdbVersion := scalafixSemanticdb.revision,

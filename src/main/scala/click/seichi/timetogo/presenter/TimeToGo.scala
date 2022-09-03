@@ -24,13 +24,13 @@ class TimeToGo extends JavaPlugin {
 
     this.task = SetPlayerGameMode.runTaskTimer(this, 0L, 20 * 60L)
 
-    Bukkit.getServer.getLogger.info("TimeToGo is Enabled!")
+    getLogger.info("TimeToGo is Enabled!")
   }
 
   override def onDisable(): Unit = {
     this.task.cancel()
 
-    Bukkit.getServer.getLogger.info("TimeToGo is Disabled!")
+    getLogger.info("TimeToGo is Disabled!")
   }
 }
 

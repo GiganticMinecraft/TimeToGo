@@ -6,9 +6,9 @@ import click.seichi.timetogo.usecase.`trait`.Clock
 trait ModeTimeUseCase {
   //region abstract members by DI
 
-  def clock: Clock
+  protected def clock: Clock
 
-  def repository: ModeTimeRepository
+  protected def repository: ModeTimeRepository
 
   //endregion
 

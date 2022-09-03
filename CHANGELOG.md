@@ -1,4 +1,13 @@
-# 0.1.0 (2022-09-03)
+# [0.2.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.1.0...v0.2.0) (2022-09-03)
+
+
+### Features
+
+* add `/ttg list` ([4ba2073](https://github.com/GiganticMinecraft/TimeToGo/commit/4ba20735e901d3283082c4a40b7a7c66ac9fd83b))
+
+
+
+# [0.1.0](https://github.com/GiganticMinecraft/TimeToGo/compare/28432b7f8686598a93f5e1f70113316d49ce2a16...v0.1.0) (2022-09-03)
 
 
 ### Bug Fixes

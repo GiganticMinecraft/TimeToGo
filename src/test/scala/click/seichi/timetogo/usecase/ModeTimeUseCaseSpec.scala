@@ -24,9 +24,9 @@ class ModeTimeUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory {
   }
 
   it should "find nothing when all modeTimes are in the future" in {
-    val list = List(ModeTime(GameMode.Survival, LocalTime.of(12,0)))
+    val list = List(ModeTime(GameMode.Survival, LocalTime.of(12, 0)))
     (() => mockRepo.list).expects().returning(list)
-    (() => mockClock.now).expects().returning(LocalTime.of(0,0)).once()
+    (() => mockClock.now).expects().returning(LocalTime.of(0, 0)).once()
 
     assert(useCase.enabledModeTime.isEmpty)
   }
@@ -42,7 +42,11 @@ class ModeTimeUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory {
 
   it should "find something when various modeTimes" in {
     val latest = ModeTime(GameMode.Survival, LocalTime.of(3, 0))
-    val list = List(ModeTime(GameMode.Creative, LocalTime.of(0, 0)), latest, ModeTime(GameMode.Spectator, LocalTime.of(15, 0)))
+    val list = List(
+      ModeTime(GameMode.Creative, LocalTime.of(0, 0)),
+      latest,
+      ModeTime(GameMode.Spectator, LocalTime.of(15, 0))
+    )
     (() => mockRepo.list).expects().returning(list)
     (() => mockClock.now).expects().returning(LocalTime.of(12, 0)).atLeastOnce()
 

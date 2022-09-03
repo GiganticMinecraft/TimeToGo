@@ -13,7 +13,11 @@ case class ModeTimeRepositoryImpl(instance: JavaPlugin) extends ModeTimeReposito
 
   override def list: List[ModeTime] = {
     for {
-      map <- config.getList("mode-time").asScala.toList.asInstanceOf[List[util.LinkedHashMap[String, String]]]
+      map <- config
+        .getList("mode-time")
+        .asScala
+        .toList
+        .asInstanceOf[List[util.LinkedHashMap[String, String]]]
       gameMode <- GameMode.fromString(map.get("game-mode"))
       time <- Try(LocalTime.parse(map.get("time"))).toOption
     } yield ModeTime(gameMode, time)

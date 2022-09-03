@@ -1,3 +1,12 @@
 name: @name@
 version: @version@
 main: click.seichi.timetogo.presenter.TimeToGo
+commands:
+  timetogo:
+    usage: /timetogo
+    aliases:
+      - ttg
+    description: This is a TimeToGo's command.
+    default: op
+    permission: timetogo.command
+    permission-message: You don't have permission to execute this command.

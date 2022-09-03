@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.2.0...v0.3.0) (2022-09-03)
+
+
+### Features
+
+* ignore players who have the permission ([31ee82a](https://github.com/GiganticMinecraft/TimeToGo/commit/31ee82a8fc8cb5032bf824baa9fb43d7e00e09d7))
+
+
+
 # [0.2.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.1.0...v0.2.0) (2022-09-03)
 
 

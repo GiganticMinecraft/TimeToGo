@@ -10,3 +10,7 @@ commands:
     default: op
     permission: timetogo.command
     permission-message: You don't have permission to execute this command.
+permissions:
+  timetogo.ignore:
+    description: The player who has this permission will not be changed its own gamemode by this plugin.
+    default: false

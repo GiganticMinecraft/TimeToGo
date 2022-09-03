@@ -9,9 +9,8 @@ import scala.jdk.CollectionConverters._
 object SetPlayerGameMode extends BukkitRunnable {
   override def run(): Unit = {
     for {
+      player <- Bukkit.getOnlinePlayers.asScala
       modeTime <- useCase.enabledModeTime
-      gameMode = modeTime.gameMode.asBukkit
-      targettedPlayers = Bukkit.getOnlinePlayers.asScala.filter(_.getGameMode != gameMode)
-    } yield targettedPlayers.foreach(_.setGameMode(gameMode))
+    } yield player.setGameMode(modeTime.gameMode.asBukkit)
   }
 }

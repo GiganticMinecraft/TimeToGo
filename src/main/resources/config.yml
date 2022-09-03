@@ -1,3 +1,4 @@
 mode-time:
   - game-mode: Survival
+    # 時刻はクォーテーションで囲んでください
     time: '0:00'

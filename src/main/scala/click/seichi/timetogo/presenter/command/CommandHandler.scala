@@ -1,6 +1,7 @@
 package click.seichi.timetogo.presenter.command
 
 import click.seichi.timetogo.presenter.TimeToGo.instance
+import org.bukkit.ChatColor
 import org.bukkit.command.{Command, CommandSender, TabExecutor}
 
 import scala.jdk.CollectionConverters._
@@ -16,6 +17,7 @@ object CommandHandler extends TabExecutor {
   ): Boolean = {
     Try(args(0)).filter(_.toLowerCase == "reload").foreach { _ =>
       instance.reloadConfig()
+      commandSender.sendMessage(s"${ChatColor.BLUE}TimeToGoの設定を再読み込みしました。")
     }
 
     true

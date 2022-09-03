@@ -23,9 +23,11 @@ object CommandHandler extends TabExecutor {
         val list = useCase.list
         val messages =
           if (list.isEmpty) List(s"${ChatColor.RED}設定はありません。")
-          else List("=== TimeToGo GameMode Schedules ===") ++
-            list.map(modeTime => s"${modeTime.time.toString}: ${modeTime.gameMode.entryName}")
-              .map(msg => s"${ChatColor.BLUE}$msg")
+          else
+            List("=== TimeToGo GameMode Schedules ===") ++
+              list
+                .map(modeTime => s"${modeTime.time.toString}: ${modeTime.gameMode.entryName}")
+                .map(msg => s"${ChatColor.BLUE}$msg")
         commandSender.sendMessage(messages.toArray)
       case _ =>
     }

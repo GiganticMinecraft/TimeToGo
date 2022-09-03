@@ -4,9 +4,12 @@
 
 ## Command
 
+コマンドは`/ttg`か`/timetogo`をコマンド名とすることで実行できます。
+
 | command       | description  | permission         | default permission |
 |---------------|--------------|--------------------|--------------------|
 | `/ttg reload` | 設定を再読み込みします。 | `timetogo.command` | OP                 |
+| `/ttg list`   | 設定の一覧を表示します。 |||
 
 ## Dependencies
 

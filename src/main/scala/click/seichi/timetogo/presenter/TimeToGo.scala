@@ -2,6 +2,7 @@ package click.seichi.timetogo.presenter
 
 import click.seichi.timetogo.infra.ModeTimeRepositoryImpl
 import click.seichi.timetogo.model.ModeTimeRepository
+import click.seichi.timetogo.presenter.command.CommandHandler
 import click.seichi.timetogo.presenter.listener.PlayerLoginListener
 import click.seichi.timetogo.presenter.task.SetPlayerGameMode
 import click.seichi.timetogo.usecase.ModeTimeUseCase
@@ -22,6 +23,7 @@ class TimeToGo extends JavaPlugin {
     reloadConfig()
 
     Bukkit.getPluginManager.registerEvents(PlayerLoginListener, this)
+    Bukkit.getPluginCommand("timetogo").setExecutor(CommandHandler)
 
     this.task = SetPlayerGameMode.runTaskTimer(this, 0L, 20 * 60L)
 
@@ -36,7 +38,7 @@ class TimeToGo extends JavaPlugin {
 }
 
 object TimeToGo {
-  private var instance: TimeToGo = _
+  var instance: TimeToGo = _
 
   lazy val useCase: ModeTimeUseCase = new ModeTimeUseCase {
     val clock: Clock = new Clock {

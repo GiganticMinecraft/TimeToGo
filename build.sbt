@@ -9,7 +9,6 @@ resolvers ++= Seq(
 )
 
 val providedDependencies = Seq(
-  // 本来は1.16.5を想定しているが、存在しないので仕方なく1.16.4
   "org.spigotmc" % "spigot-api" % "1.16.4-R0.1-SNAPSHOT"
 ).map(_ % "provided")
 

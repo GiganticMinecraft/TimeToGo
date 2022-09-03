@@ -1,5 +1,6 @@
 package click.seichi.timetogo.presenter.task
 
+import click.seichi.timetogo.presenter.GameModeChanger
 import click.seichi.timetogo.presenter.TimeToGo.useCase
 import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitRunnable
@@ -11,6 +12,6 @@ object SetPlayerGameMode extends BukkitRunnable {
     for {
       player <- Bukkit.getOnlinePlayers.asScala
       modeTime <- useCase.enabledModeTime
-    } yield player.setGameMode(modeTime.gameMode.asBukkit)
+    } yield GameModeChanger.change(player, modeTime.gameMode.asBukkit)
   }
 }

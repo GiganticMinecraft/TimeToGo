@@ -14,5 +14,5 @@ trait ModeTimeUseCase {
 
   def list(): List[ModeTime] = repository.list().sortBy(_.time)
 
-  def enabledTimeMode: Option[ModeTime] = list().findLast(_.time.isBefore(clock.now))
+  def enabledModeTime: Option[ModeTime] = list().findLast(_.time.isBefore(clock.now))
 }

@@ -1,6 +1,7 @@
 name: @name@
 version: @version@
 main: click.seichi.timetogo.presenter.TimeToGo
+api-version: 1.8
 commands:
   timetogo:
     usage: /timetogo

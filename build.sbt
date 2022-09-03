@@ -14,6 +14,7 @@ val providedDependencies = Seq(
 ).map(_ % "provided")
 
 val testDependencies = Seq(
+  "org.scalamock" %% "scalamock" % "5.2.0",
   "org.scalatest" %% "scalatest" % "3.2.13"
 ).map(_ % "test")
 

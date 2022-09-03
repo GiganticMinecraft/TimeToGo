@@ -12,7 +12,7 @@ trait ModeTimeUseCase {
 
   //endregion
 
-  def list(): List[ModeTime] = repository.list().sortBy(_.time)
+  def list: List[ModeTime] = repository.list.sortBy(_.time)
 
-  def enabledModeTime: Option[ModeTime] = list().findLast(_.time.isBefore(clock.now))
+  def enabledModeTime: Option[ModeTime] = list.findLast(_.time.isBefore(clock.now))
 }

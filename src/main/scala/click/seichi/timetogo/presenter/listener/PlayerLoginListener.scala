@@ -6,10 +6,6 @@ import org.bukkit.event.{EventHandler, Listener}
 
 object PlayerLoginListener extends Listener {
   @EventHandler
-  def onPlayerLogin(event: PlayerJoinEvent): Unit = {
-    useCase.enabledModeTime match {
-      case Some(modeTime) => event.getPlayer.setGameMode(modeTime.gameMode.asBukkit)
-      case _ =>
-    }
-  }
+  def onPlayerLogin(event: PlayerJoinEvent): Unit =
+    useCase.enabledModeTime.map(_.gameMode.asBukkit).foreach(event.getPlayer.setGameMode)
 }

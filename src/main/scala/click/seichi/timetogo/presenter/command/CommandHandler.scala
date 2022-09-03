@@ -1,6 +1,6 @@
 package click.seichi.timetogo.presenter.command
 
-import click.seichi.timetogo.presenter.TimeToGo.instance
+import click.seichi.timetogo.presenter.TimeToGo.{instance, useCase}
 import org.bukkit.ChatColor
 import org.bukkit.command.{Command, CommandSender, TabExecutor}
 
@@ -15,9 +15,19 @@ object CommandHandler extends TabExecutor {
     alias: String,
     args: Array[String]
   ): Boolean = {
-    Try(args(0)).filter(_.toLowerCase == "reload").foreach { _ =>
-      instance.reloadConfig()
-      commandSender.sendMessage(s"${ChatColor.BLUE}TimeToGoの設定を再読み込みしました。")
+    Try(args(0)).toOption.map(_.toLowerCase) match {
+      case Some(arg) if arg == "reload" =>
+        instance.reloadConfig()
+        commandSender.sendMessage(s"${ChatColor.BLUE}TimeToGoの設定を再読み込みしました。")
+      case Some(arg) if arg == "list" =>
+        val list = useCase.list
+        val messages =
+          if (list.isEmpty) List(s"${ChatColor.RED}設定はありません。")
+          else List("=== TimeToGo GameMode Schedules ===") ++
+            list.map(modeTime => s"${modeTime.time.toString}: ${modeTime.gameMode.entryName}")
+              .map(msg => s"${ChatColor.BLUE}$msg")
+        commandSender.sendMessage(messages.toArray)
+      case _ =>
     }
 
     true
@@ -28,5 +38,5 @@ object CommandHandler extends TabExecutor {
     command: Command,
     alias: String,
     args: Array[String]
-  ): util.List[String] = List("reload").asJava
+  ): util.List[String] = List("reload", "list").asJava
 }

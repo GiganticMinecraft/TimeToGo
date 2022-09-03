@@ -18,6 +18,8 @@ class TimeToGo extends JavaPlugin {
   TimeToGo.instance = this
 
   override def onEnable(): Unit = {
+    saveDefaultConfig()
+
     Bukkit.getPluginManager.registerEvents(PlayerLoginListener, this)
 
     this.task = SetPlayerGameMode.runTaskTimer(this, 0L, 20 * 60L)

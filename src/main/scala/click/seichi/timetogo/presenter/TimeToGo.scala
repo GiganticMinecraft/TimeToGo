@@ -19,6 +19,7 @@ class TimeToGo extends JavaPlugin {
 
   override def onEnable(): Unit = {
     saveDefaultConfig()
+    reloadConfig()
 
     Bukkit.getPluginManager.registerEvents(PlayerLoginListener, this)
 

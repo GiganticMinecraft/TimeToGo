@@ -4,9 +4,9 @@
 
 ## Command
 
-| command       | description  |
-|---------------|--------------|
-| `/ttg reload` | 設定を再読み込みします  |
+| command       | description  | permission         | default permission |
+|---------------|--------------|--------------------|--------------------|
+| `/ttg reload` | 設定を再読み込みします。 | `timetogo.command` | OP                 |
 
 ## Dependencies
 

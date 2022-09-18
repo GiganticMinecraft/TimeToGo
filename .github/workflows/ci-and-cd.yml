@@ -34,9 +34,6 @@ jobs:
         run: sbt "scalafix --check"
       - name: Test
         run: sbt test
-
-      - name: Clean build artifact for caching target folder
-        run: rm -r target/build
   cd:
     name: Release
     runs-on: ubuntu-latest

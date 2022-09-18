@@ -25,7 +25,7 @@
     * `Creative`
     * `Spectator`
     * `Adventure`
-  * 時刻はクォーテーションで囲ってください。
+  * 時刻は「HH:mm」の形式です（秒以下には対応していません）。クォーテーションで囲ってください。
 
 ```yaml
 mode-time:

@@ -19,7 +19,7 @@ on:
 
 jobs:
   ci:
-    name: Build, Lint and Test
+    name: Lint and Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,8 +32,8 @@ jobs:
         run: sbt scalafmtCheckAll
       - name: Check lint with Scalafix
         run: sbt "scalafix --check"
-      - name: Build artifact with Test
-        run: sbt assembly
+      - name: Test
+        run: sbt test
 
       - name: Clean build artifact for caching target folder
         run: rm -r target/build
@@ -61,7 +61,7 @@ jobs:
           git-user-email: "github-actions[bot]@users.noreply.github.com"
           skip-version-file: 'true'
           skip-git-pull: 'true'
-      # バージョンが異なっているので、再度Build
+      # バージョンが異なっているので、ここでBuild
       - name: Build artifact
         run: sbt assembly
         if: ${{ steps.changelog.outputs.skipped == 'false' }}

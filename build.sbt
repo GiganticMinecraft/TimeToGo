@@ -66,8 +66,6 @@ lazy val root = (project in file(".")).settings(
   name := "TimeToGo",
   scalaVersion := "2.13.8",
   assembly / assemblyOutputPath := baseDirectory.value / "target" / "build" / s"${name.value}-${version.value}.jar",
-  // assmeblyの中でtestをする
-  assembly / test := (Test / test).value,
   // scalafixがsemanticdbを必要とする
   semanticdbEnabled := true,
   semanticdbVersion := scalafixSemanticdb.revision,

@@ -11,7 +11,7 @@ object SetPlayerGameMode extends BukkitRunnable {
   override def run(): Unit = {
     for {
       player <- Bukkit.getOnlinePlayers.asScala
-      modeTime <- useCase.enabledModeTime
-    } yield GameModeChanger.change(player, modeTime.gameMode.asBukkit)
+      modeTrigger <- useCase.enabledModeTrigger
+    } yield GameModeChanger.change(player, modeTrigger.gameMode.asBukkit)
   }
 }

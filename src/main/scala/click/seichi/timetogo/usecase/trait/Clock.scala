@@ -1,7 +1,9 @@
 package click.seichi.timetogo.usecase.`trait`
 
-import java.time.LocalTime
+import java.time.{DayOfWeek, LocalTime}
 
 trait Clock {
-  def now: LocalTime
+  def now_time: LocalTime
+
+  def now_day_of_week: DayOfWeek
 }

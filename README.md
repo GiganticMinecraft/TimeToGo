@@ -42,7 +42,7 @@ About
   * 時刻は「`HH:mm`」の形式です（秒以下には対応していません）。クォーテーションで囲ってください。
 
 ```yaml
-mode-time:
+mode-triggers:
   - game-mode: Survival
     days-of-week:
       - 'MONDAY'

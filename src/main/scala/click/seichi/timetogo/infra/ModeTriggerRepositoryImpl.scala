@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin
 
 import java.time.{DayOfWeek, LocalTime}
 import java.util
+import java.util.Collections.emptyList
 import scala.jdk.CollectionConverters._
 import scala.util.Try
 
@@ -12,22 +13,27 @@ case class ModeTriggerRepositoryImpl(instance: JavaPlugin) extends ModeTriggerRe
   private def config = instance.getConfig
 
   override def list: List[ModeTrigger] = {
+    def mapListAsDaysOfWeek(daysOfWeek: util.List[String]): Set[DayOfWeek] = {
+      (for {
+        day <- daysOfWeek.asScala
+        day <- Try(DayOfWeek.valueOf(day)).toOption
+      } yield day).toSet
+    }
+
     for {
       map <- config
-        .getList("mode-time")
+        .getList("mode-triggers")
         .asScala
         .toList
         .asInstanceOf[List[util.LinkedHashMap[String, _]]]
-      gameMode <- GameMode.fromString(map.get("game-mode").asInstanceOf[String])
-      daysOfWeek = map
-        .get("days-of-week")
+      gameMode <- Option(map.get("game-mode"))
+      gameMode <- GameMode.fromString(gameMode.asInstanceOf[String])
+      time <- Option(map.get("time"))
+      time <- Try(LocalTime.parse(time.asInstanceOf[String])).toOption
+      daysOfWeekList = Option(map.get("days-of-week"))
+        .getOrElse(emptyList)
         .asInstanceOf[util.List[String]]
-        .asScala
-        .map(str => Try(DayOfWeek.valueOf(str)).toOption)
-        .withFilter(_.isDefined)
-        .map(_.get)
-        .toSet
-      time <- Try(LocalTime.parse(map.get("time").asInstanceOf[String])).toOption
+      daysOfWeek = mapListAsDaysOfWeek(daysOfWeekList)
     } yield {
       val set = if (daysOfWeek.isEmpty) DayOfWeek.values().toSet else daysOfWeek
 

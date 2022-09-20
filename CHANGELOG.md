@@ -1,3 +1,22 @@
+# [1.0.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.3.0...v1.0.0) (2022-09-20)
+
+
+### Bug Fixes
+
+* change config key name (`day` -> `days`) ([b662b0b](https://github.com/GiganticMinecraft/TimeToGo/commit/b662b0bc7c2cba2880e7c75cc8e51e5d04da55f9))
+
+
+### Features
+
+* add DayOfWeek for settings ([db25423](https://github.com/GiganticMinecraft/TimeToGo/commit/db254237ad50cd9aad5fd17e437ad3ebad7ec256))
+
+
+### BREAKING CHANGES
+
+* add new key for settings
+
+
+
 # [0.3.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.2.0...v0.3.0) (2022-09-03)
 
 

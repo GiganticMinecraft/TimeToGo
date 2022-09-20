@@ -20,7 +20,7 @@ case class ModeTriggerRepositoryImpl(instance: JavaPlugin) extends ModeTriggerRe
         .asInstanceOf[List[util.LinkedHashMap[String, _]]]
       gameMode <- GameMode.fromString(map.get("game-mode").asInstanceOf[String])
       daysOfWeek = map
-        .get("day-of-week")
+        .get("days-of-week")
         .asInstanceOf[util.List[String]]
         .asScala
         .map(str => Try(DayOfWeek.valueOf(str)).toOption)

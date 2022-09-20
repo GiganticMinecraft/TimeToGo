@@ -1,3 +1,13 @@
+## [1.0.1](https://github.com/GiganticMinecraft/TimeToGo/compare/v1.0.0...v1.0.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* fix logging ([b220bcc](https://github.com/GiganticMinecraft/TimeToGo/commit/b220bcc9ada771eef5469b8999ecbe2851d8d40f))
+* **infra:** fix NPE ([6ae9fce](https://github.com/GiganticMinecraft/TimeToGo/commit/6ae9fcecdc91eff70777bb2c44f6d458d1dcdb5f))
+
+
+
 # [1.0.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.3.0...v1.0.0) (2022-09-20)
 
 

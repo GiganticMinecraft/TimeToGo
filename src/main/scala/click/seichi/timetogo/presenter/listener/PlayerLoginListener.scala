@@ -9,7 +9,7 @@ object PlayerLoginListener extends Listener {
   @EventHandler
   def onPlayerLogin(event: PlayerJoinEvent): Unit =
     useCase
-      .enabledModeTime
+      .enabledModeTrigger
       .map(_.gameMode.asBukkit)
       .foreach(gameMode => GameModeChanger.change(event.getPlayer, gameMode))
 }

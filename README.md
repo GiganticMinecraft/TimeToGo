@@ -19,21 +19,38 @@
 ## How to write config
 
 * `config.yml`に記載します。
-* ゲームモード(`game-mode`)と時刻(`time`)のペアを配列で記載します。
+* ゲームモード(`game-mode`), 曜日の配列(`day-of-week`)、時刻(`time`)の組み合わせを配列で記載します。
   * ゲームモードには以下の値のうちのいずれか1つのみ指定できます。
     * `Survival`
     * `Creative`
     * `Spectator`
     * `Adventure`
+  * 曜日は
+    * 大文字・小文字は区別されるので注意してください。
+    * 指定しなかったもしくは空の場合はすべての曜日が指定されたとみなします。
+    * 以下の値を配列で指定できます。
+      * `MONDAY`
+      * `TUESDAY`
+      * `WEDNESDAY`
+      * `THURSDAY`
+      * `FRIDAY`
+      * `SATURDAY`
+      * `SUNDAY`
   * 時刻は「HH:mm」の形式です（秒以下には対応していません）。クォーテーションで囲ってください。
 
 ```yaml
 mode-time:
   - game-mode: Survival
+    day-of-week:
+      - 'MONDAY'
     time: '10:00'
   - game-mode: Creative
+    day-of-week:
+      - 'MONDAY'
     time: '11:00'
   - game-mode: Spectator
+    day-of-week:
+      - 'MONDAY'
     time: '12:00'
 ```
 

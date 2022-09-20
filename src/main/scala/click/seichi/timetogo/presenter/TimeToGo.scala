@@ -1,17 +1,17 @@
 package click.seichi.timetogo.presenter
 
-import click.seichi.timetogo.infra.ModeTimeRepositoryImpl
-import click.seichi.timetogo.model.ModeTimeRepository
+import click.seichi.timetogo.infra.ModeTriggerRepositoryImpl
+import click.seichi.timetogo.model.ModeTriggerRepository
 import click.seichi.timetogo.presenter.command.CommandHandler
 import click.seichi.timetogo.presenter.listener.PlayerLoginListener
 import click.seichi.timetogo.presenter.task.SetPlayerGameMode
-import click.seichi.timetogo.usecase.ModeTimeUseCase
+import click.seichi.timetogo.usecase.ModeTriggerUseCase
 import click.seichi.timetogo.usecase.`trait`.Clock
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitTask
 
-import java.time.LocalTime
+import java.time.{DayOfWeek, LocalDate, LocalTime}
 
 class TimeToGo extends JavaPlugin {
   private var task: BukkitTask = _
@@ -40,11 +40,12 @@ class TimeToGo extends JavaPlugin {
 object TimeToGo {
   var instance: TimeToGo = _
 
-  lazy val useCase: ModeTimeUseCase = new ModeTimeUseCase {
+  lazy val useCase: ModeTriggerUseCase = new ModeTriggerUseCase {
     val clock: Clock = new Clock {
-      def now: LocalTime = LocalTime.now
+      def now_time: LocalTime = LocalTime.now
+      def now_day_of_week: DayOfWeek = LocalDate.now.getDayOfWeek
     }
 
-    val repository: ModeTimeRepository = ModeTimeRepositoryImpl(instance)
+    val repository: ModeTriggerRepository = ModeTriggerRepositoryImpl(instance)
   }
 }

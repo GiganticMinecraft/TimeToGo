@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.3.0...v0.3.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* change config key name (`day` -> `days`) ([b39d051](https://github.com/GiganticMinecraft/TimeToGo/commit/b39d051e4a4d226d18e4ac30e1e77dcac91e67ab))
+
+
+
 # [0.3.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.2.0...v0.3.0) (2022-09-03)
 
 

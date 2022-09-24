@@ -8,20 +8,16 @@ resolvers ++= Seq(
   "Sonatype OSS" at "https://s01.oss.sonatype.org/content/groups/public/"
 )
 
-val providedDependencies = Seq(
-  "org.spigotmc" % "spigot-api" % "1.16.4-R0.1-SNAPSHOT"
-).map(_ % "provided")
+val providedDependencies =
+  Seq("org.spigotmc" % "spigot-api" % "1.16.4-R0.1-SNAPSHOT").map(_ % "provided")
 
-val testDependencies = Seq(
-  "org.scalamock" %% "scalamock" % "5.2.0",
-  "org.scalatest" %% "scalatest" % "3.2.13"
-).map(_ % "test")
+val testDependencies =
+  Seq("org.scalamock" %% "scalamock" % "5.2.0", "org.scalatest" %% "scalatest" % "3.2.13")
+    .map(_ % "test")
 
 libraryDependencies ++= providedDependencies ++ testDependencies
 
-excludeDependencies ++= Seq(
-  ExclusionRule(organization = "org.bukkit", name = "bukkit"),
-)
+excludeDependencies ++= Seq(ExclusionRule(organization = "org.bukkit", name = "bukkit"))
 
 // endregion
 

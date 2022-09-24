@@ -7,12 +7,11 @@ sealed abstract class DayOfWeek(val asJava: JavaDayOfWeek) {
 }
 
 object DayOfWeek {
-  def values: Set[DayOfWeek] = Set(Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday)
+  def values: Set[DayOfWeek] =
+    Set(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
 
   def fromString(str: String): Option[DayOfWeek] =
     values.find(_.entryName.toLowerCase == str.toLowerCase)
-
-  case object Sunday extends DayOfWeek(JavaDayOfWeek.SUNDAY)
 
   case object Monday extends DayOfWeek(JavaDayOfWeek.MONDAY)
 
@@ -25,4 +24,6 @@ object DayOfWeek {
   case object Friday extends DayOfWeek(JavaDayOfWeek.FRIDAY)
 
   case object Saturday extends DayOfWeek(JavaDayOfWeek.SATURDAY)
+
+  case object Sunday extends DayOfWeek(JavaDayOfWeek.SUNDAY)
 }

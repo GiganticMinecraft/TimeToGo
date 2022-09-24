@@ -8,10 +8,10 @@ import org.bukkit.scheduler.BukkitRunnable
 import scala.jdk.CollectionConverters._
 
 object SetPlayerGameMode extends BukkitRunnable {
-  override def run(): Unit = {
+  override def run(): Unit =
     for {
       player <- Bukkit.getOnlinePlayers.asScala
       modeTrigger <- useCase.enabledModeTrigger
-    } yield GameModeChanger.change(player, modeTrigger.gameMode.asBukkit)
-  }
+      gameMode = modeTrigger.gameMode.asBukkit
+    } yield GameModeChanger.changeWithNotification(player, gameMode)
 }

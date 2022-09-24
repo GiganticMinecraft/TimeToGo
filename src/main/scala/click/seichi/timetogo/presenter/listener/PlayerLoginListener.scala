@@ -8,8 +8,9 @@ import org.bukkit.event.{EventHandler, Listener}
 object PlayerLoginListener extends Listener {
   @EventHandler
   def onPlayerLogin(event: PlayerJoinEvent): Unit =
-    useCase
-      .enabledModeTrigger
-      .map(_.gameMode.asBukkit)
-      .foreach(gameMode => GameModeChanger.change(event.getPlayer, gameMode))
+    for {
+      modeTrigger <- useCase.enabledModeTrigger
+      gameMode = modeTrigger.gameMode.asBukkit
+      player = event.getPlayer
+    } yield GameModeChanger.changeWithNotification(player, gameMode)
 }

@@ -32,28 +32,28 @@ About
     * 大文字・小文字は区別されるので注意してください。
     * 指定しなかったもしくは空の場合はすべての曜日が指定されたとみなします。
     * 以下の値を配列で指定できます。
-      * `MONDAY`
-      * `TUESDAY`
-      * `WEDNESDAY`
-      * `THURSDAY`
-      * `FRIDAY`
-      * `SATURDAY`
-      * `SUNDAY`
+      * `Monday`
+      * `Tuesday`
+      * `Wednesday`
+      * `Thursday`
+      * `Friday`
+      * `Saturday`
+      * `Sunday`
   * 時刻は「`HH:mm`」の形式です（秒以下には対応していません）。クォーテーションで囲ってください。
 
 ```yaml
 mode-triggers:
   - game-mode: Survival
     days-of-week:
-      - 'MONDAY'
+      - Monday
     time: '10:00'
   - game-mode: Creative
     days-of-week:
-      - 'MONDAY'
+      - Monday
     time: '11:00'
   - game-mode: Spectator
     days-of-week:
-      - 'MONDAY'
+      - Monday
     time: '12:00'
 ```
 

@@ -46,6 +46,6 @@ object TimeToGo {
       def now_day_of_week: DayOfWeek = LocalDate.now.getDayOfWeek
     }
 
-    val repository: ModeTriggerRepository = ModeTriggerRepositoryImpl(instance)
+    val repository: ModeTriggerRepository = ModeTriggerRepositoryImpl(instance.getConfig)
   }
 }

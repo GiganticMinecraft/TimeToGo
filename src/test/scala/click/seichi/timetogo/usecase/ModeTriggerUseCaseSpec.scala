@@ -33,7 +33,7 @@ class ModeTriggerUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory 
     assert(useCase.findEnabled.isEmpty)
   }
 
-  it should "find nothing when all ModeTriggers are in the past but doesn't contains the WeekOfDay" in {
+  it should "find nothing when all ModeTriggers are in the past but doesn't contain the WeekOfDay" in {
     val list = List(ModeTrigger(GameMode.Survival, Set(DayOfWeek.SUNDAY), LocalTime.of(12, 0)))
     (() => mockRepo.list).expects().returning(list)
     (() => mockClock.time).expects().returning(LocalTime.of(13, 0)).once()

@@ -28,7 +28,7 @@ case class ModeTriggerRepositoryImpl(config: FileConfiguration) extends ModeTrig
       gameMode <- Option(map.get("game-mode"))
       gameMode <- GameMode.fromString(gameMode.asInstanceOf[String])
       time <- Option(map.get("time"))
-      time <- Try(LocalTime.parse(time.asInstanceOf[String])).toOption
+      time <- LocalTimeHelper.parse(time.asInstanceOf[String])
       daysOfWeekList = Option(map.get("days-of-week"))
         .getOrElse(emptyList)
         .asInstanceOf[util.List[String]]

@@ -1,3 +1,18 @@
+# [2.1.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v2.0.0...v2.1.0) (2022-09-25)
+
+
+### Bug Fixes
+
+* DayOfWeekHelper.fromString returns Option without throwing exceptions ([4242261](https://github.com/GiganticMinecraft/TimeToGo/commit/4242261e38d03536125b1f31899931ac0456a516))
+* TimeToGo#repository must be function ([3100be3](https://github.com/GiganticMinecraft/TimeToGo/commit/3100be379cbe8c039f3e2fc60567491110b7c4ea))
+
+
+### Features
+
+* **infra:** add LocalTimeHelper ([d9a9286](https://github.com/GiganticMinecraft/TimeToGo/commit/d9a9286f47e418f91fb13e7ca84fe5cb9a7b6318))
+
+
+
 # [2.0.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v1.1.0...v2.0.0) (2022-09-24)
 
 
@@ -54,15 +69,6 @@
 ### BREAKING CHANGES
 
 * add new key for settings
-
-
-
-# [0.3.0](https://github.com/GiganticMinecraft/TimeToGo/compare/v0.2.0...v0.3.0) (2022-09-03)
-
-
-### Features
-
-* ignore players who have the permission ([31ee82a](https://github.com/GiganticMinecraft/TimeToGo/commit/31ee82a8fc8cb5032bf824baa9fb43d7e00e09d7))
 
 
 

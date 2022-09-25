@@ -46,6 +46,7 @@ object TimeToGo {
       def now_day_of_week: DayOfWeek = LocalDate.now.getDayOfWeek
     }
 
-    val repository: ModeTriggerRepository = ModeTriggerRepositoryImpl(instance.getConfig)
+    // functionでないと、`config.yml`に変更があっても読み込まれない
+    def repository: ModeTriggerRepository = ModeTriggerRepositoryImpl(instance.getConfig)
   }
 }

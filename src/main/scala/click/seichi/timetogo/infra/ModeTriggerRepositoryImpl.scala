@@ -1,24 +1,20 @@
 package click.seichi.timetogo.infra
 
 import click.seichi.timetogo.model.{GameMode, ModeTrigger, ModeTriggerRepository}
-import org.bukkit.plugin.java.JavaPlugin
+import org.bukkit.configuration.file.FileConfiguration
 
-import java.time.{LocalTime, DayOfWeek}
+import java.time.DayOfWeek
 import java.util
 import java.util.Collections.emptyList
 import scala.jdk.CollectionConverters._
-import scala.util.Try
 
-case class ModeTriggerRepositoryImpl(instance: JavaPlugin) extends ModeTriggerRepository {
-  private def config = instance.getConfig
-
+case class ModeTriggerRepositoryImpl(config: FileConfiguration) extends ModeTriggerRepository {
   override def list: List[ModeTrigger] = {
     def mapListAsDaysOfWeek(daysOfWeek: util.List[String]): Set[DayOfWeek] = {
       for {
         day <- daysOfWeek.asScala
-        day <- Try(DayOfWeekHelper.fromString(day)).toOption
-        if day.isDefined
-      } yield day.get
+        day <- DayOfWeekHelper.fromString(day)
+      } yield day
     }.toSet
 
     for {
@@ -30,7 +26,7 @@ case class ModeTriggerRepositoryImpl(instance: JavaPlugin) extends ModeTriggerRe
       gameMode <- Option(map.get("game-mode"))
       gameMode <- GameMode.fromString(gameMode.asInstanceOf[String])
       time <- Option(map.get("time"))
-      time <- Try(LocalTime.parse(time.asInstanceOf[String])).toOption
+      time <- LocalTimeHelper.parse(time.asInstanceOf[String])
       daysOfWeekList = Option(map.get("days-of-week"))
         .getOrElse(emptyList)
         .asInstanceOf[util.List[String]]

@@ -42,10 +42,11 @@ object TimeToGo {
 
   lazy val useCase: ModeTriggerUseCase = new ModeTriggerUseCase {
     val clock: Clock = new Clock {
-      def now_time: LocalTime = LocalTime.now
-      def now_day_of_week: DayOfWeek = LocalDate.now.getDayOfWeek
+      def time: LocalTime = LocalTime.now
+      def dayOfWeek: DayOfWeek = LocalDate.now.getDayOfWeek
     }
 
-    val repository: ModeTriggerRepository = ModeTriggerRepositoryImpl(instance)
+    // functionでないと、`config.yml`に変更があっても読み込まれない
+    def repository: ModeTriggerRepository = ModeTriggerRepositoryImpl(instance.getConfig)
   }
 }

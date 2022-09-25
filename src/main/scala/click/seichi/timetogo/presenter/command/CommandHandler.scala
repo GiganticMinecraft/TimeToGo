@@ -27,7 +27,7 @@ object CommandHandler extends TabExecutor {
             List("=== TimeToGo GameMode Schedules ===") ++
               list
                 .map(modeTrigger =>
-                  s"${modeTrigger.daysOfWeek.map(_.entryName).mkString(" ,")} - ${modeTrigger.time.toString}: ${modeTrigger.gameMode.entryName}"
+                  s"${modeTrigger.daysOfWeek.map(_.toString).mkString(", ")} - ${modeTrigger.time.toString}: ${modeTrigger.gameMode.entryName}"
                 )
                 .map(msg => s"${ChatColor.BLUE}$msg")
         commandSender.sendMessage(messages.toArray)

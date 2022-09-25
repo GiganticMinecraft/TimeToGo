@@ -1,9 +1,9 @@
 package click.seichi.timetogo.infra
 
-import click.seichi.timetogo.model.{DayOfWeek, GameMode, ModeTrigger, ModeTriggerRepository}
+import click.seichi.timetogo.model.{GameMode, ModeTrigger, ModeTriggerRepository}
 import org.bukkit.plugin.java.JavaPlugin
 
-import java.time.LocalTime
+import java.time.{LocalTime, DayOfWeek}
 import java.util
 import java.util.Collections.emptyList
 import scala.jdk.CollectionConverters._
@@ -16,7 +16,7 @@ case class ModeTriggerRepositoryImpl(instance: JavaPlugin) extends ModeTriggerRe
     def mapListAsDaysOfWeek(daysOfWeek: util.List[String]): Set[DayOfWeek] = {
       for {
         day <- daysOfWeek.asScala
-        day <- Try(DayOfWeek.fromString(day)).toOption
+        day <- Try(DayOfWeekHelper.fromString(day)).toOption
         if day.isDefined
       } yield day.get
     }.toSet
@@ -36,7 +36,7 @@ case class ModeTriggerRepositoryImpl(instance: JavaPlugin) extends ModeTriggerRe
         .asInstanceOf[util.List[String]]
       daysOfWeek = mapListAsDaysOfWeek(daysOfWeekList)
     } yield {
-      val set = if (daysOfWeek.isEmpty) DayOfWeek.values else daysOfWeek
+      val set = if (daysOfWeek.isEmpty) DayOfWeekHelper.values else daysOfWeek
 
       ModeTrigger(gameMode, set, time)
     }

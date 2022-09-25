@@ -21,7 +21,7 @@ class ModeTriggerUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory 
     (() => mockClock.now_time).expects().never()
     (() => mockClock.now_day_of_week).expects().never()
 
-    assert(useCase.enabledModeTrigger.isEmpty)
+    assert(useCase.findEnabled.isEmpty)
   }
 
   it should "find nothing when all ModeTriggers are in the future" in {
@@ -30,7 +30,7 @@ class ModeTriggerUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory 
     (() => mockClock.now_time).expects().returning(LocalTime.of(0, 0)).once()
     (() => mockClock.now_day_of_week).expects().never()
 
-    assert(useCase.enabledModeTrigger.isEmpty)
+    assert(useCase.findEnabled.isEmpty)
   }
 
   it should "find nothing when all ModeTriggers are in the past but doesn't contains the WeekOfDay" in {
@@ -39,7 +39,7 @@ class ModeTriggerUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory 
     (() => mockClock.now_time).expects().returning(LocalTime.of(13, 0)).once()
     (() => mockClock.now_day_of_week).expects().returning(DayOfWeek.Monday.asJava).once()
 
-    assert(useCase.enabledModeTrigger.isEmpty)
+    assert(useCase.findEnabled.isEmpty)
   }
 
   it should "find something when all ModeTriggers are in the past and contains the WeekOfDay" in {
@@ -50,7 +50,7 @@ class ModeTriggerUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory 
     (() => mockClock.now_time).expects().returning(LocalTime.of(12, 0)).atLeastOnce()
     (() => mockClock.now_day_of_week).expects().returning(latestDayOfWeek.asJava).atLeastOnce()
 
-    assert(useCase.enabledModeTrigger.contains(latest))
+    assert(useCase.findEnabled.contains(latest))
   }
 
   it should "find something when various ModeTriggers" in {
@@ -65,6 +65,6 @@ class ModeTriggerUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory 
     (() => mockClock.now_time).expects().returning(LocalTime.of(12, 0)).atLeastOnce()
     (() => mockClock.now_day_of_week).expects().returning(latestDayOfWeek.asJava).atLeastOnce()
 
-    assert(useCase.enabledModeTrigger.contains(latest))
+    assert(useCase.findEnabled.contains(latest))
   }
 }

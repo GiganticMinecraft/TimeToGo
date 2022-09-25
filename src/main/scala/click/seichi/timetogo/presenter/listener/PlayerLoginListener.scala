@@ -9,7 +9,7 @@ object PlayerLoginListener extends Listener {
   @EventHandler
   def onPlayerLogin(event: PlayerJoinEvent): Unit =
     for {
-      modeTrigger <- useCase.enabledModeTrigger
+      modeTrigger <- useCase.findEnabled
       gameMode = modeTrigger.gameMode.asBukkit
       player = event.getPlayer
     } yield GameModeChanger.changeWithNotification(player, gameMode)

@@ -14,7 +14,7 @@ trait ModeTriggerUseCase {
 
   def list: List[ModeTrigger] = repository.list.sortBy(_.time)
 
-  def enabledModeTrigger: Option[ModeTrigger] = list.findLast(trigger =>
+  def findEnabled: Option[ModeTrigger] = list.findLast(trigger =>
     trigger.time.isBefore(clock.now_time) && trigger
       .daysOfWeek
       .map(_.asJava)

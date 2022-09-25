@@ -7,16 +7,14 @@ import java.time.DayOfWeek
 import java.util
 import java.util.Collections.emptyList
 import scala.jdk.CollectionConverters._
-import scala.util.Try
 
 case class ModeTriggerRepositoryImpl(config: FileConfiguration) extends ModeTriggerRepository {
   override def list: List[ModeTrigger] = {
     def mapListAsDaysOfWeek(daysOfWeek: util.List[String]): Set[DayOfWeek] = {
       for {
         day <- daysOfWeek.asScala
-        day <- Try(DayOfWeekHelper.fromString(day)).toOption
-        if day.isDefined
-      } yield day.get
+        day <- DayOfWeekHelper.fromString(day)
+      } yield day
     }.toSet
 
     for {

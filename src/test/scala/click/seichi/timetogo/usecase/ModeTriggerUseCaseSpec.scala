@@ -53,7 +53,7 @@ class ModeTriggerUseCaseSpec extends AnyFlatSpec with Diagrams with MockFactory 
     assert(useCase.findEnabled.contains(latest))
   }
 
-  it should "find something when various ModeTriggers" in {
+  it should "find something when multiple ModeTriggers" in {
     val latestDayOfWeek = DayOfWeek.MONDAY
     val latest = ModeTrigger(GameMode.Survival, Set(latestDayOfWeek), LocalTime.of(3, 0))
     val list = List(

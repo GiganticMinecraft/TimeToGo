@@ -3,7 +3,7 @@ package click.seichi.timetogo.infra
 import click.seichi.timetogo.model.{GameMode, ModeTrigger, ModeTriggerRepository}
 import org.bukkit.configuration.file.FileConfiguration
 
-import java.time.{DayOfWeek, LocalTime}
+import java.time.DayOfWeek
 import java.util
 import java.util.Collections.emptyList
 import scala.jdk.CollectionConverters._

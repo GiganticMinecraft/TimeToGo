@@ -1,5 +1,4 @@
 import ResourceFilter.filterResources
-import sbt.Keys.baseDirectory
 
 // region Dependencies
 
@@ -61,7 +60,7 @@ unmanagedResources / excludeFilter :=
 lazy val root = (project in file(".")).settings(
   name := "TimeToGo",
   scalaVersion := "2.13.10",
-  assembly / assemblyOutputPath := baseDirectory.value / "target" / "build" / s"${name.value}-${version.value}.jar",
+  assembly / assemblyJarName := s"${name.value}-${version.value}.jar",
   // scalafixがsemanticdbを必要とする
   semanticdbEnabled := true,
   semanticdbVersion := scalafixSemanticdb.revision,

@@ -11,7 +11,7 @@ val providedDependencies =
   Seq("org.spigotmc" % "spigot-api" % "1.16.4-R0.1-SNAPSHOT").map(_ % "provided")
 
 val testDependencies =
-  Seq("org.scalamock" %% "scalamock" % "6.0.0", "org.scalatest" %% "scalatest" % "3.2.18")
+  Seq("org.scalamock" %% "scalamock" % "6.0.0", "org.scalatest" %% "scalatest" % "3.2.19")
     .map(_ % "test")
 
 libraryDependencies ++= providedDependencies ++ testDependencies

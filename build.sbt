@@ -59,7 +59,7 @@ unmanagedResources / excludeFilter :=
 
 lazy val root = (project in file(".")).settings(
   name := "TimeToGo",
-  scalaVersion := "2.13.15",
+  scalaVersion := "2.13.16",
   assembly / assemblyJarName := s"${name.value}-${version.value}.jar",
   // scalafixがsemanticdbを必要とする
   semanticdbEnabled := true,

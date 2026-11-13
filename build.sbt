@@ -33,6 +33,7 @@ tokenReplacementMap := Map("name" -> name.value, "version" -> version.value)
 
 val filesToBeReplacedInResourceFolder = Seq("plugin.yml")
 
+@transient
 val filteredResourceGenerator = taskKey[Seq[File]]("Resource generator to filter resources")
 
 Compile / filteredResourceGenerator :=

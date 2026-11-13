@@ -33,6 +33,7 @@ tokenReplacementMap := Map("name" -> name.value, "version" -> version.value)
 
 val filesToBeReplacedInResourceFolder = Seq("plugin.yml")
 
+@transient
 val filteredResourceGenerator = taskKey[Seq[File]]("Resource generator to filter resources")
 
 Compile / filteredResourceGenerator :=
@@ -52,6 +53,18 @@ unmanagedResources / excludeFilter :=
   filesToBeReplacedInResourceFolder.foldLeft((unmanagedResources / excludeFilter).value)(
     _.||(_)
   )
+
+// Package the token-filtered output instead of its original resource file.
+Compile / packageBin / mappings ~= { mappings =>
+  val replacedResourcePaths = filesToBeReplacedInResourceFolder.map(resource =>
+    s"/src/main/resources/$resource"
+  )
+
+  mappings.filterNot { case (file, _) =>
+    val sourcePath = file.toString.replace('\\', '/')
+    replacedResourcePaths.exists(sourcePath.endsWith)
+  }
+}
 
 // endregion
 
